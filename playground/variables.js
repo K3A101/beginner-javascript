@@ -1,6 +1,8 @@
 console.log('This does work!');
 
-var first = 'Keisha';
-let last = 'Alexander';
+const first = 'Keisha';
+const last = 'Alexander';
 const age = 23;
-   
+// use const by default
+// change a variable in the future made a let
+// Naming conventions is camelCase
