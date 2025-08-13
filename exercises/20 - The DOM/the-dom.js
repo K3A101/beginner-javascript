@@ -9,6 +9,7 @@
 // pizzaList.insertAdjacentText('beforeend', '🍕');
 
 // console.log(heading);
+
 // classes
 const pic = document.querySelector('.nice');
 pic.classList.add('cool');
@@ -19,3 +20,10 @@ function toggleRound() {
 }
 
 pic.addEventListener('click', toggleRound);
+
+// Attributes
+pic.alt = 'Car in to the snow';
+pic.width = 200;
+
+const custom = document.querySelector('.custom');
+console.log(custom.dataset);
