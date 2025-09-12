@@ -32,8 +32,9 @@ const image = document.createElement('img');
 // add a class of cute
 // add an alt of Cute Puppy
 // Append that image to the wrapper
-image.src = 'https://picsum.photos/200/';
+image.src = 'https://picsum.photos/500/';
 image.width = 250;
+image.height = 250;
 image.classList.add('cute');
 image.alt = 'Cute Puppy';
 
@@ -52,16 +53,20 @@ div.insertAdjacentHTML('afterbegin', html);
 
 // add a class to the second paragraph called warning
 // remove the first paragraph
-const firstP = document.querySelector('.wrapper div').firstElementChild;
-firstP.classList.add('warning');
+const divWithP = document.querySelector('.wrapper div');
+const firstP = divWithP.children[0];
+firstP.remove(); // remove a node
+const secondP = divWithP.firstElementChild;
+
+secondP.classList.add('warning');
 
 // create a function called generatePlayerCard that takes in three arguments: name, age, and height
 function generatePlayerCard(name, age, height) {
   const card = `
    <div class="playerCard">
   <h2>${name} — ${age}</h2>
-   <p>They are ${height}cm and ${age} years old. In Dog years this person would be AGEINDOGYEARS. That would be a tall dog!</p>
-   <button>DELETE ME</button>
+   <p>They are ${height}cm and ${age} years old. In Dog years this person would be ${age * 7} years. That would be a tall dog!</p>
+   <button class="delete" type="button">DELETE ME</button>
  </div>
 `;
   const cardHtml = document.createRange().createContextualFragment(card);
@@ -90,9 +95,24 @@ cardContainer.appendChild(playerThree);
 
 // put the div into the DOM just before the wrapper element
 
-div.insertAdjacentElement('afterbegin', cardContainer);
+div.insertAdjacentElement('beforebegin', cardContainer);
 // Bonus, put a delete Button on each card so when you click it, the whole card is removed
+const deleteButtons = document.querySelectorAll('.delete');
 
+// function removeCard() {
+//   const card = document.querySelector('.playerCard');
+//   return card.remove();
+// }
+
+function removeCard(event) {
+  const buttonThatGotClicked = event.currentTarget;
+  // return buttonThatGotClicked.parentElement.remove();
+  return buttonThatGotClicked.closest('.playerCard').remove();
+}
+
+deleteButtons.forEach((button) => {
+  button.addEventListener('click', removeCard);
+});
 // select all the buttons!
 // make out delete function
 // loop over them and attach a listener

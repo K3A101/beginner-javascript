@@ -1,15 +1,37 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Dom Cardio</title>
+    <link rel="stylesheet" href="../../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Dom Cardio</title>
-  <link rel="stylesheet" href="../../base.css">
-</head>
+  <style>
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
 
-<body>
-  <script src="./DOM-Cardio.js"></script>
-</body>
+      .playerCard {
+        background: white;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border-radius: 20px;
+        h2 {
+          color: black;
+        }
+        button {
+          outline: 2px solid pink;
+        }
 
+      }
+    }
+  </style>
+
+  <body>
+    <script src="./DOM-Cardio.js"></script>
+  </body>
 </html>
