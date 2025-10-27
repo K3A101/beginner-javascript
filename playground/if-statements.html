@@ -129,22 +129,29 @@
       function showAdminBar() {}
       const isAdmin = true;
       isAdmin ? showAdminBar() : null;
+      isAdmin && showAdminBar();
 
       // The AND AND trick
       function check1() {
+        console.log("Running check 1");
         return true;
       }
       function check2() {
-        return true;
+        console.log("Running check 2");
+        return false;
       }
       function check3() {
+        console.log("Running check 3");
         return true;
       }
 
       if (check1() && check2() && check3()) {
-        console.log('All checks passed');
+        console.log("All checks passed");
+      } else {
+        console.log("Some checks failed");
       }
-      
+
+      if (isAdmin) showAdminBar();
     </script>
   </body>
 </html>

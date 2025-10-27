@@ -1,16 +1,78 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <style>
+      .turt {
+        --x: 0px;
+        --y: 0px;
+        --rotateX: 0;
+        --rotate: 0;
+        position: relative;
+        transition: transform 0.5s;
+        transform: translateX(var(--x)) translateY(var(--y))
+          rotateY(var(--rotateX)) rotate(var(--rotate));
+      }
+    </style>
+    <img width="200" src="./turtle.png" alt="Turt" class="turt" />
 
+    <script>
+      const turtle = document.querySelector(".turt");
+      let x = 0;
+      let y = 0;
+      const speed = 50;
+      let flipped = false;
+      let rotate = 0;
 
-<body>
+      function handleKeyDown(event) {
+        // if its not arrow key we dont care
+        if (!event.key.includes("Arrow")) {
+          return;
+        }
+        switch (event.key) {
+          case "ArrowUp":
+            y -= 1;
+            rotate = -90;
+            break;
+          case "ArrowDown":
+            y += 1;
+            rotate = 90;
+            break;
+          case "ArrowLeft":
+            x -= 1;
+            flipped = true;
+            rotate = 0;
+            break;
+          case "ArrowRight":
+            x += 1;
+            flipped = false;
+            rotate = 0;
+            break;
+          default:
+            console.log("That is not a valid move");
+            break;
+        }
+        // turtle.style.background = 'red';
+        // turtle.style['background'] = 'red';
+        turtle.setAttribute(
+          "style",
+          `
+        --rotateX: ${flipped ? "180deg" : "0"};
+        --rotate: ${rotate}deg;
+        --x: ${x * speed}px; 
+        --y: ${y * speed}px; 
+        `
+        );
+        // turtle.setAttribute('style', `--y: ${y}px`);
+      }
 
-</body>
-
+      window.addEventListener("keydown", handleKeyDown);
+    </script>
+  </body>
 </html>
