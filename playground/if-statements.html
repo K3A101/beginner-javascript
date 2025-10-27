@@ -1,19 +1,150 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>If Statements</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>If Statements</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <h2>Thruthy Values</h2>
+    <h2>Falsy Values</h2>
+    <script>
+      const age = 65;
+      if (age > 70) {
+        console.log("In your seventies");
+      } else if (age > 60) {
+        console.log("In your sixties");
+      } else if (age > 50) {
+        console.log("In your fifties");
+      } else {
+        console.log("Nothing was true");
+      }
 
-<body>
-  <script>
-    if (10 > 2) {
-      console.log('Yep');
-    }
-  </script>
-</body>
+      function slugify(sentence, lowercase) {
+        const slug = sentence.replace(/\s/g, "-");
+        if (lowercase) {
+          return slug.toLowerCase();
+        }
+        return slug;
+      }
+      // if (10 > 2) {
+      //   console.log("yep");
+      // } else if (11 > 10) {
+      //   console.log("nope");
+      // }
 
+      const name = "Wes";
+      const last = "Bos";
+      if (name === "Wes" || name === "Scott") {
+        console.log("Cool name");
+      }
+
+      // You can use BEDMAS method inside the if statement
+      if (name === "Wes" || (name === "wes" && last === "bos")) {
+        console.log("Cool name");
+      }
+
+      const isAwesomeName = "awesome".includes(name);
+
+      if (isAwesomeName) {
+        console.log("Super Cool");
+      }
+
+      function nameIsAwesome(name) {
+        return "awesome".includes(name);
+      }
+      if (nameIsAwesome("wes")) {
+        console.log("Cool name dude");
+      }
+
+      const dog = "";
+
+      if (dog) {
+        console.log("You have a dog");
+      } else {
+        console.log("You don 't have a dog");
+      }
+
+      const score = {};
+
+      if (score) {
+        console.log("There is a score already");
+      } else {
+        console.log("No score yet");
+      }
+
+      const values = [
+        [],
+        {},
+        -10,
+        1,
+        0,
+        "",
+        "full string",
+        " ",
+        undefined,
+        NaN,
+        null,
+        "0️⃣",
+        "💩",
+      ];
+
+      console.group("truthy or falsy values");
+      values.forEach((value) => {
+        if (value) {
+          console.log(value, "is truthy");
+        } else {
+          console.log(value, "is falsy");
+        }
+      });
+      console.groupEnd();
+
+      console.clear();
+
+      const isCool = true;
+
+      if (!isCool) {
+        console.log("You are not cool!");
+      }
+
+      const count = 2;
+      // let word;
+
+      // if (count === 1) {
+      //   word = 'item';
+      // } else {
+      //   word = 'items';
+      // }
+
+      // 1. Condition
+      // 2. what to do if true
+      // 3. What to do if false
+      const word = count === 1 ? "item" : "items";
+
+      const sentence = `You have ${count} ${word} in your cart`;
+      console.log(sentence);
+
+      function showAdminBar() {}
+      const isAdmin = true;
+      isAdmin ? showAdminBar() : null;
+
+      // The AND AND trick
+      function check1() {
+        return true;
+      }
+      function check2() {
+        return true;
+      }
+      function check3() {
+        return true;
+      }
+
+      if (check1() && check2() && check3()) {
+        console.log('All checks passed');
+      }
+      
+    </script>
+  </body>
 </html>
