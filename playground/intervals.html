@@ -1,15 +1,52 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Intervals and Timers</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Intervals and Timers</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <script>
+      // setTimeout(() => {
+      //   console.log('Runs');
+      // }, 5000);
+      function buzzer() {
+        console.log("ENGGGGGG!");
+      }
+      setTimeout(() => {
+        buzzer();
+      }, 5000);
+      console.log("Starting");
+      setTimeout(buzzer, 5000);
+      console.log("Finishing");
+      // setInterval(buzzer, 100);
 
-<body>
+      function setImmediateInterval(funcToRun, ms) {
+        // right away call that function
+        funcToRun();
+        // run a regular interval
+        return setInterval(funcToRun, ms);
+      }
 
-</body>
+      // setImmediateInterval(buzzer, 2000);
 
+      function destroy() {
+        document.body.innerHTML = `<p>DESTROYED</p>`;
+      }
+
+      // setTimeout(destroy, 200);
+      // if someone doesnt click before 5 sec something happens and if someone click before 5 sec
+      // How do is stop the timer from running
+      const bombTimer = setTimeout(destroy, 5000); // set a reference to the timer in a variable
+
+      window.addEventListener("click", () => {
+        console.log("You clicked, you save the world");
+
+        clearTimeout(bombTimer); // STOP THIS TIMER FROM RUNNING
+      });
+      
+    </script>
+  </body>
 </html>
