@@ -1,17 +1,126 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title></title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title></title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <input type="text" name="first" value="Wes" />
+    <script src="https://unpkg.com/lodash@4.17.21/lodash.js"></script>
+    <script>
+      const age = 100;
+      const person = {
+        name: "wes",
+        propertyToCheck: "NEVER",
+        "cool-dude": true,
+        "reallyy cool": false,
+        age,
+        777: true,
+        clothing: {
+          shirts: 10,
+          pants: 2,
+        },
+        sayHello(greeting = "Hey") {
+          return `${greeting} ${this.name}`;
+        },
+      };
 
-<body>
-  <script>
+      person.job = "Web Developer";
+      person.age = 50;
 
-  </script>
-</body>
+      // const wesFreeze = Object.freeze(person);
 
+      // object literal
+      // const person = new Object({
+      //   name: "wes",
+      //   age: 100,
+      // });
+      // const propertyToCheck = prompt('What do you want to check?');
+
+      // console.log(person);
+      // console.log(person.age);
+      // console.log(person[propertyToCheck]);
+
+      // const nameInput = document.querySelector('[name="first"]');
+      // const name = nameInput ? nameInput.value : ""; // checks if the input element exists
+      // console.log(name);
+
+      // // DELETE A PRORPERTY FROM AN OBJECT
+      // delete person.job;
+      // console.log(person);
+
+      // methods
+      // A function that lives inside in the object
+
+      let name1 = "Wes";
+      let name2 = "Wes";
+      console.log(name1 === name2); // true
+      name1 = "scott";
+      console.log(name1 === name2); // false
+      // Update name1 to be what name2
+      name1 = name2; // copies the value of the name2 to name1
+      console.log(name1 === name2); // true
+      name2 = name1;
+      name2 = "Westopher";
+
+      const person1 = {
+        first: "wes",
+        last: "Bos",
+        clothing: {
+          shirts: 10,
+          pants: 2,
+        },
+      };
+      const person2 = {
+        first: "wes",
+        last: "Bos",
+      };
+
+      // const person3 = person1;
+      // person3.first = 'Larry';
+      // console.log(person3);
+
+      // const person3 = { ...person1 };
+      // const person4 = Object.assign({}, person1);
+
+      const person3 = _.cloneDeep(person1);
+      person3.clothing.shirts = 100;
+      console.log(person3, person1);
+
+      const meatInventory = {
+        bacon: 2,
+        sausage: 3,
+        oyster: 10,
+      };
+
+      const veggieInventory = {
+        lettuce: 5,
+        tomatoes: 3,
+        oyster: 15,
+      };
+
+      // const inventory = { ...meatInventory, ...veggieInventory };
+      const inventory = {
+        ...meatInventory,
+        ...veggieInventory,
+        oysters: 10,
+      };
+      console.log(inventory);
+
+      function doStuff(data) {
+        data = 'do something else';
+        console.log(data);
+      }
+
+      function doStuff2(data) {
+        data.tomatoes = 10000000;
+        console.log(data);
+      }
+
+      doStuff2(inventory);
+    </script>
+  </body>
 </html>
