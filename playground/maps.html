@@ -1,17 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <title>Maps</title>
+    <link rel="stylesheet" href="../base.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1.0">
-  <title>Maps</title>
-  <link rel="stylesheet" href="../base.css">
-</head>
+  <body>
+    <ul class="prizes"></ul>
+    <script>
+      const person1 = {
+        name: "wes",
+        age: 200,
+      };
+      const myMap = new Map();
+      // .set()
+      myMap.set("name", "wes");
+      myMap.set(100, "This is a number");
+      myMap.set(person1, "Really cool!");
+      console.log(myMap);
+      console.log(myMap.get(person1)); // outputs really cool
+      const score = 100;
+      const prizes = new Map();
+      prizes.set(100, "Bear");
+      prizes.set(200, "Duck");
+      prizes.set(300, "Cat");
+      console.log(`you win a ${prizes.get(score)}`);
 
-<body>
-  <script>
+      // select that ul
+      const ul = document.querySelector(".prizes");
+      prizes.forEach((entry) => {
+        console.log(entry);
+      });
 
-  </script>
-</body>
+      /* for (const prize of prizes) {
+        // console.log(prize);
+        console.log(prize[0], prize[1]);
+      } */
 
+      /*   for (const [key, val] of prizes) {
+        // console.log(prize);
+        console.log(points, prize);
+      } */
+
+      for (const [points, prize] of prizes) {
+        // console.log(prize);
+        // console.log(points, prize);
+        const li = `<li>${points}: ${prize}</li>`;
+        ul.insertAdjacentHTML("beforebeend", li);
+      }
+
+      // document.body.appendChild(ul);
+    </script>
+  </body>
 </html>
